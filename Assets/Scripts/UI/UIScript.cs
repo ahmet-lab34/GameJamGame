@@ -14,6 +14,7 @@ public class UIScript : MonoBehaviour
     [SerializeField] private GameObject GameUI;
     [SerializeField] private GameObject Settings;
     [SerializeField] private GameObject GameMap1;
+    [SerializeField] private GameObject ESC_Menu;
     [SerializeField] private Button RestartButton;
     [SerializeField] private Button MainMenuButton;
     [SerializeField] private Button MainPlayButton;
@@ -21,6 +22,8 @@ public class UIScript : MonoBehaviour
     [SerializeField] private Button MainExitButton;
     [SerializeField] private Button OptionsBackButton;
     [SerializeField] private PlayerScript playerScript;
+
+    private bool open = false;
 
     void Start()
     {
@@ -38,6 +41,7 @@ public class UIScript : MonoBehaviour
         }
         RestartButton.onClick.AddListener(() => OnButtonPressed(RestartButton));
         MainMenuButton.onClick.AddListener(() => OnButtonPressed(MainMenuButton));
+
 
         MainPlayButton.onClick.AddListener(() => OnButtonPressed(MainPlayButton));
         MainOptionsButton.onClick.AddListener(() => OnButtonPressed(MainOptionsButton));
@@ -64,8 +68,13 @@ public class UIScript : MonoBehaviour
         }
         if (button == MainMenuButton)
         {
-            Scene currentScene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(currentScene.name);
+            /*Scene currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.name);*/
+
+            MainMenu.SetActive(true);
+            GameMap1.SetActive(false);
+
+
         }
         if (button == MainPlayButton)
         {
@@ -92,5 +101,24 @@ public class UIScript : MonoBehaviour
         GameUI.SetActive(true);
         MainMenu.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    public void repeatLevel()
+    {
+        playerScript.playerNumbers.playerSouls += 1;
+        GameMap1.SetActive(true);
+    }
+    public void ESC_Button()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && open)
+        {
+            ESC_Menu.SetActive(true);
+            open = !open;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && !open)
+        {
+            ESC_Menu.SetActive(false);
+            open = !open;
+        }
     }
 }

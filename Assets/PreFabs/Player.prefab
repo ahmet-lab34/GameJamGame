@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4520483013165637613}
   - component: {fileID: 7776315732587213846}
   - component: {fileID: 2738571448329644141}
+  - component: {fileID: 3442521576139520144}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -252,6 +253,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeRecorderCS
   recordDuration: 5
   clonePrefab: {fileID: 6141587600226556236, guid: 01e27453a8548ce4395b8ced123feb1d, type: 3}
+--- !u!114 &3442521576139520144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510769411839974711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02616056d440b844881c845fcf7b581d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerUIScript
+  dashCooldown_Display: {fileID: 0}
+  dashCooldown_Visual: {fileID: 0}
+  playerHealthCondition: {fileID: 0}
+  DeathPanelForPlayer: {fileID: 0}
 --- !u!1 &2820430638036127238
 GameObject:
   m_ObjectHideFlags: 0

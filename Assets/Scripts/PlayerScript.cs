@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour
 {
     private GroundCHK GroundCheck;
     private Rigidbody2D rb;
+    private UIScript uIScript;
 
     public Animator animator;
     private PlayerInput input;
@@ -53,6 +54,7 @@ public class PlayerScript : MonoBehaviour
 
         GroundCheck = FindFirstObjectByType<GroundCHK>();
         PlayerUIScript = FindFirstObjectByType<PlayerUIScript>();
+        uIScript = FindFirstObjectByType<UIScript>();
 
         jumpAction = input.actions.FindAction("Jump");
 
@@ -104,7 +106,8 @@ public class PlayerScript : MonoBehaviour
         {
             Flip();
         }
-
+        
+        uIScript.ESC_Button();
     }
 
     void Jump()
@@ -115,8 +118,9 @@ public class PlayerScript : MonoBehaviour
 
     public void GetHit()
     {
-        if (playerNumbers.playerSouls != 0)
+        if (playerNumbers.playerSouls >= 0)
         {
+            playerNumbers.playerSouls -= 1;
             RespawnPlayer();
         }
         else
@@ -136,12 +140,8 @@ public class PlayerScript : MonoBehaviour
         }
         else
         {
-            repeatLevel();
+            uIScript.repeatLevel();
         }
-    }
-    void repeatLevel()
-    {
-        
     }
 
     private void Flip()
