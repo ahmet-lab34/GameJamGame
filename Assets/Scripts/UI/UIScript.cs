@@ -20,6 +20,7 @@ public class UIScript : MonoBehaviour
     [SerializeField] private Button MainOptionsButton;
     [SerializeField] private Button MainExitButton;
     [SerializeField] private Button OptionsBackButton;
+    [SerializeField] private PlayerScript playerScript;
 
     void Start()
     {

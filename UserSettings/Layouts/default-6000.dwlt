@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 382}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 112}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 186
+  controlID: 70
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 80
+  controlID: 71
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 56}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 49
+  controlID: 72
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -273,15 +273,15 @@ MonoBehaviour:
     y: 683
     width: 1291
     height: 250
-  m_MinSize: {x: 101, y: 126}
-  m_MaxSize: {x: 4001, y: 4026}
-  m_ActualView: {fileID: 20}
+  m_MinSize: {x: 231, y: 276}
+  m_MaxSize: {x: 10001, y: 10026}
+  m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
   - {fileID: 20}
   - {fileID: 21}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -596,7 +596,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 762
+    y: 707
     width: 1290
     height: 224
   m_SerializedDataModeController:
@@ -623,7 +623,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 0
     m_Folders:
-    - Packages/com.unity.render-pipelines.universal/Editor/Converter
+    - Packages/com.unity.mathematics/Tests/Tests/Shared
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -633,24 +633,24 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 71
   m_LastFolders:
-  - Packages/com.unity.render-pipelines.universal/Editor/Converter
+  - Packages/com.unity.mathematics/Tests/Tests/Shared
   m_LastFoldersGridSize: 71
   m_LastProjectPath: C:\11.29.2025 Format\Unity Projects\GameJamGame1\GameJamGame
   m_LockTracker:
     m_IsLocked: 0
   m_LastLocalAssetsSearchArea: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 804}
+    scrollPos: {x: 0, y: 548}
     m_SelectedIDs:
-    - m_Data: 49680
+    - m_Data: 52006
     m_LastClickedID:
-      m_Data: 49680
+      m_Data: 52006
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 51018
-    - m_Data: 51020
-    - m_Data: 51022
-    - m_Data: 51024
+    - m_Data: 51042
+    - m_Data: 51044
+    - m_Data: 51046
+    - m_Data: 51048
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -683,10 +683,10 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 51018
-    - m_Data: 51020
-    - m_Data: 51022
-    - m_Data: 51024
+    - m_Data: 51042
+    - m_Data: 51044
+    - m_Data: 51046
+    - m_Data: 51048
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -713,8 +713,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: []
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs:
+    - m_Data: 48606
+    m_LastClickedInstanceID: 48606
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs:
     - m_Data: 53888
@@ -749,7 +750,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 372}
     m_GridSize: 71
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
@@ -798,15 +799,17 @@ MonoBehaviour:
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
-      - m_Data: -157982
-      - m_Data: -157976
-      - m_Data: -88238
-      - m_Data: -39384
-      - m_Data: -29078
-      - m_Data: -15868
+      - m_Data: -20026
+      - m_Data: -20022
+      - m_Data: -8076
+      - m_Data: -8072
+      - m_Data: -3438
+      - m_Data: -2454
+      - m_Data: -1320
       - m_Data: -1316
       - m_Data: -1314
-      - m_Data: 49046
+      - m_Data: 50746
+      - m_Data: 50748
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1803,7 +1806,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 707
+    y: 762
     width: 1290
     height: 224
   m_SerializedDataModeController:
@@ -1905,7 +1908,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 108
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

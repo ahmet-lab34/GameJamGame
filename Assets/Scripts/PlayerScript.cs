@@ -23,6 +23,9 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private PlayerUIScript PlayerUIScript;
 
+    public static UnityEngine.Vector2 checkpointPosition;
+    public static bool hasCheckpoint = false;
+
     public PlayerStats movingStats = new PlayerStats();
     private PlayerStats originalStats = new PlayerStats();
 
@@ -38,7 +41,7 @@ public class PlayerScript : MonoBehaviour
     [Serializable]
     public class Numerics
     {
-        public int playerHealth = 3;
+        public int playerSouls = 3;
     }
 
     private void Awake()
@@ -112,13 +115,33 @@ public class PlayerScript : MonoBehaviour
 
     public void GetHit()
     {
-        playerNumbers.playerHealth -= 1;
-
-        if (playerNumbers.playerHealth <= 0)
+        if (playerNumbers.playerSouls != 0)
+        {
+            RespawnPlayer();
+        }
+        else
         {
             PlayerUIScript.Die();
         }
-        Debug.Log("Player Got Hit !");
+    }
+
+    void RespawnPlayer()
+    {
+        Debug.Log("Respawned the player Without CHECK");
+        if (hasCheckpoint)
+        {
+            Debug.Log("Respawned the player");
+            rb.linearVelocity = UnityEngine.Vector2.zero;
+            transform.position = checkpointPosition;
+        }
+        else
+        {
+            repeatLevel();
+        }
+    }
+    void repeatLevel()
+    {
+        
     }
 
     private void Flip()

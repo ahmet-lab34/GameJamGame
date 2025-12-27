@@ -19,7 +19,7 @@ public class PlayerUIScript : MonoBehaviour
 
     void Update()
     {
-        playerHealthCondition.value = player.playerNumbers.playerHealth;
+        //playerHealthCondition.value = player.playerNumbers.playerSouls;
     }
 
     public void Die()
