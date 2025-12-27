@@ -16,6 +16,7 @@ public class PlayerScript : MonoBehaviour
     public Animator animator;
     private PlayerInput input;
     private InputAction jumpAction;
+    public bool doubleJump = false;
     [HideInInspector] public float Horizontal;
 
     public bool IsFacingRight;
@@ -79,11 +80,18 @@ public class PlayerScript : MonoBehaviour
             Debug.Log("Character is Grounded");
         }
 
-        if (jumpAction.triggered && GroundCheck.Grounded)
+        if (jumpAction.triggered)
         {
-            rb.AddForce(UnityEngine.Vector2.up * movingStats.jumpHeight, ForceMode2D.Impulse);
+            if (GroundCheck.Grounded && !doubleJump)
+            {
+                Jump();
+            }
+            else if (doubleJump)
+            {
+                Jump();
+                doubleJump = !doubleJump;
+            }
         }
-
         if (!GroundCheck.Grounded)
         {
             animator.SetBool("IsJumping", true);
@@ -94,6 +102,12 @@ public class PlayerScript : MonoBehaviour
             Flip();
         }
 
+    }
+
+    void Jump()
+    {
+        doubleJump = true;
+        rb.AddForce(UnityEngine.Vector2.up * movingStats.jumpHeight, ForceMode2D.Impulse);
     }
 
     public void GetHit()
