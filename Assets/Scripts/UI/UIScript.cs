@@ -70,7 +70,7 @@ public class UIScript : MonoBehaviour
         {
             /*Scene currentScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(currentScene.name);*/
-
+            ESC_Menu.SetActive(false);
             MainMenu.SetActive(true);
             GameMap1.SetActive(false);
 

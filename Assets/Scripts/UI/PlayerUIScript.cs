@@ -5,9 +5,7 @@ using UnityEngine.UI;
 public class PlayerUIScript : MonoBehaviour
 {
     PlayerScript player;
-    [SerializeField] private TMP_Text dashCooldown_Display;
-    [SerializeField] private Slider dashCooldown_Visual;
-    [SerializeField] private Slider playerHealthCondition;
+    [SerializeField] private TMP_Text playerSoulCondition;
 
     [SerializeField] private UIScript DeathPanelForPlayer;
 
@@ -19,7 +17,7 @@ public class PlayerUIScript : MonoBehaviour
 
     void Update()
     {
-        playerHealthCondition.value = player.playerNumbers.playerSouls;
+        playerSoulCondition.text = player.playerNumbers.playerSouls.ToString();
     }
 
     public void Die()

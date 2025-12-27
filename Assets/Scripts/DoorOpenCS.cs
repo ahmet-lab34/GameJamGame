@@ -16,6 +16,7 @@ public class DoorOpenCS : MonoBehaviour
     public GameObject Door;
     
     public bool isOpen = false;
+    public bool closeDoorr = false;
     private Quaternion OriginalRotation;
     private Quaternion openRotation;
 
@@ -48,16 +49,16 @@ public class DoorOpenCS : MonoBehaviour
     }
     void openDoorUpdate()
     {
-        if (!isOpen)
-        {
-            if (Input.GetKeyDown(key1))
-            {
-                isOpen = true;
-            }
-        }
         if (isOpen)
         {
             StartCoroutine(OpenDoorTemporarily());
+        }
+    }
+    public void closeDoorUpdate()
+    {
+        if (closeDoorr)
+        {
+            closeDoor();
         }
     }
 
@@ -75,6 +76,7 @@ public class DoorOpenCS : MonoBehaviour
     void Update()
     {
         openDoorUpdate();
+        closeDoorUpdate();
     }
 }
 

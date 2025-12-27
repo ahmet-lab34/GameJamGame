@@ -6,6 +6,7 @@ TagManager:
   tags:
   - checkPoint
   - Enemy
+  - Clone
   layers:
   - Default
   - TransparentFX
