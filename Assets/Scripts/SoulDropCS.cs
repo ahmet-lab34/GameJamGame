@@ -13,7 +13,7 @@ public class SoulDropCS : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (player.playerNumbers.playerSouls > 5)
+            if (player.playerNumbers.playerSouls < 5)
             {
                 player.playerNumbers.playerSouls += 1;
             }

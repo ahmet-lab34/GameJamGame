@@ -31,9 +31,7 @@ public class HittingRadiusCS : MonoBehaviour
         {
             currentEnemy.enemyHealth -= 1;
             Debug.Log("Enemy is damaged");
-            animator.SetBool("Hitting", true);
             StartCoroutine(AttackCooldown());
-            animator.SetBool("Hitting", false);
         }
         else if (Input.GetKeyDown(KeyCode.F) && canAttack)
         {

@@ -3,85 +3,77 @@ using UnityEngine;
 public class EnemyChaseCS : MonoBehaviour
 {
     public float speed = 2f;
-    private PlayerScript playerScript;
+    public float attackCooldown = 2f;
 
     private Transform player;
+    private PlayerScript playerScript;
+
     private bool playerDetected = false;
+    private bool playerInAttackRange = false;
     private bool canAttack = true;
-    private bool playerInAttackRange;
-    private bool facingRight = true;
-    private float attackCoolDown = 2f;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        playerScript = FindAnyObjectByType<PlayerScript>();
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+            playerScript = playerObj.GetComponent<PlayerScript>();
+        }
+        else
+        {
+            Debug.LogError("Player not found! Make sure Player has the 'Player' tag.");
+        }
     }
 
     void Update()
     {
-        if (playerDetected)
-        {
-            ChasePlayer();
-        }
+        if (player == null) return;
+
         if (playerInAttackRange)
         {
             AttackPlayer();
+        }
+        else if (playerDetected)
+        {
+            ChasePlayer();
         }
     }
 
     void ChasePlayer()
     {
-        float direction = player.position.x - transform.position.x;
-
-        if (direction > 0 && !facingRight)
-        {
-            Flip();
-        }
-        else if (direction < 0 && facingRight)
-        {
-            Flip();
-        }
-        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(
+            transform.position,
+            player.position,
+            speed * Time.deltaTime
+        );
     }
+
     void AttackPlayer()
     {
-        FacePlayer();
+        if (!canAttack) return;
 
-        if (canAttack)
+        canAttack = false;
+        Debug.Log("Enemy attacks!");
+
+        if (playerScript != null)
         {
-            canAttack = false;
-            Debug.Log("Enemy attacks!");
-
             playerScript.GetHit();
-
-            Invoke(nameof(ResetAttack), attackCoolDown);
         }
+        else
+        {
+            Debug.LogError("PlayerScript is null!");
+        }
+
+        Invoke(nameof(ResetAttack), attackCooldown);
     }
+
     void ResetAttack()
     {
         canAttack = true;
     }
 
-    void FacePlayer()
-    {
-        float dir = player.position.x - transform.position.x;
-
-        if (dir > 0 && !facingRight)
-            Flip();
-        else if (dir < 0 && facingRight)
-            Flip();
-    }
-
-    
-    void Flip()
-    {
-        facingRight = !facingRight;
-
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
-    }
     public void SetPlayerDetected(bool detected)
     {
         playerDetected = detected;

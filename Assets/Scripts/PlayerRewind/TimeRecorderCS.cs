@@ -25,8 +25,12 @@ public class TimeRecorderCS : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            StartCoroutine(rewindAnimation());
-            SpawnClone();
+            if (playerScript.playerNumbers.playerSouls > 0)
+            {
+                playerScript.playerNumbers.playerSouls -= 1;
+                StartCoroutine(rewindAnimation());
+                SpawnClone();
+            }
         }
     }
 
