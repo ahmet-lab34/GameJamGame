@@ -10,7 +10,7 @@ using System;
 
 public class PlayerScript : MonoBehaviour
 {
-    private GroundCHK GroundCheck;
+    [SerializeField] private GroundCHK GroundCheck;
     private Rigidbody2D rb;
     private UIScript uIScript;
 
@@ -76,12 +76,12 @@ public class PlayerScript : MonoBehaviour
     {
         Horizontal = Input.GetAxisRaw("Horizontal");
 
-        animator.SetBool("IsRunning", Horizontal > 0 || Horizontal < 0);
+        animator.SetBool("Running", Horizontal > 0 || Horizontal < 0);
         animator.SetFloat("yVelocity", rb.linearVelocity.y);
 
-        if (GroundCheck.Grounded)
+        if (GroundCheck.Grounded && rb.linearVelocity.y <= 0)
         {
-            animator.SetBool("IsJumping", false);
+            animator.SetBool("Jumping", false);
             Debug.Log("Character is Grounded");
         }
 
@@ -89,17 +89,15 @@ public class PlayerScript : MonoBehaviour
         {
             if (GroundCheck.Grounded && !doubleJump)
             {
+                animator.SetBool("Jumping", true);
                 Jump();
             }
             else if (doubleJump)
             {
+                animator.SetBool("Jumping", true);
                 Jump();
                 doubleJump = !doubleJump;
             }
-        }
-        if (!GroundCheck.Grounded)
-        {
-            animator.SetBool("IsJumping", true);
         }
 
         if ((IsFacingRight && Horizontal < 0f) || (!IsFacingRight && Horizontal > 0f))
@@ -113,6 +111,7 @@ public class PlayerScript : MonoBehaviour
     void Jump()
     {
         doubleJump = true;
+        animator.SetBool("Jumping", true);
         rb.AddForce(UnityEngine.Vector2.up * movingStats.jumpHeight, ForceMode2D.Impulse);
     }
 

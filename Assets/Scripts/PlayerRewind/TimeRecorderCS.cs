@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class TimeRecorderCS : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class TimeRecorderCS : MonoBehaviour
         public Quaternion rotation;
         public float time;
     }
+    private PlayerScript playerScript;
 
     public float recordDuration = 5f;
     public GameObject clonePrefab;
@@ -18,10 +20,12 @@ public class TimeRecorderCS : MonoBehaviour
 
     void Update()
     {
+        playerScript = GetComponent<PlayerScript>();
         RecordFrame();
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            StartCoroutine(rewindAnimation());
             SpawnClone();
         }
     }
@@ -56,6 +60,13 @@ public class TimeRecorderCS : MonoBehaviour
         );
 
         CloneReplayCS replay = clone.GetComponent<CloneReplayCS>();
-        replay.frames = new List<FrameData>(recordedFrames);
+        replay.frames = new List<FrameData>(recordedFrames);  
+    }
+
+    IEnumerator rewindAnimation()
+    {
+        playerScript.animator.SetBool("Rewinding", true);
+        yield return new WaitForSeconds(1);
+        playerScript.animator.SetBool("Rewinding", false);
     }
 }

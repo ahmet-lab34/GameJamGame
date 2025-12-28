@@ -3,12 +3,14 @@ using UnityEngine;
 
 public class HittingRadiusCS : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
     private EnemyCS currentEnemy;
     private bool canAttack = true;
     public float attackCooldown = 1f;
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        animator = GetComponentInParent<Animator>();
         if (other.CompareTag("Enemy"))
         {
             currentEnemy = other.GetComponent<EnemyCS>();
@@ -29,13 +31,21 @@ public class HittingRadiusCS : MonoBehaviour
         {
             currentEnemy.enemyHealth -= 1;
             Debug.Log("Enemy is damaged");
+            animator.SetBool("Hitting", true);
+            StartCoroutine(AttackCooldown());
+            animator.SetBool("Hitting", false);
+        }
+        else if (Input.GetKeyDown(KeyCode.F) && canAttack)
+        {
             StartCoroutine(AttackCooldown());
         }
     }
     IEnumerator AttackCooldown()
     {
         canAttack = false;
+        animator.SetBool("Hitting", true);
         yield return new WaitForSeconds(attackCooldown);
+        animator.SetBool("Hitting", false);
         canAttack = true;
     }
 }

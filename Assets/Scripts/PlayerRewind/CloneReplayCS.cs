@@ -6,7 +6,6 @@ public class CloneReplayCS : MonoBehaviour
     public List<TimeRecorderCS.FrameData> frames;
 
     private int index = 0;
-
     void Update()
     {
         if (frames == null || frames.Count == 0) return;
