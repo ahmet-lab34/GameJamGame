@@ -22,11 +22,17 @@ public class UIScript : MonoBehaviour
     [SerializeField] private Button MainExitButton;
     [SerializeField] private Button OptionsBackButton;
     [SerializeField] private PlayerScript playerScript;
+    [SerializeField] private AudioClip audio;
+    public AudioSource audioSource;
 
     private bool open = false;
 
     void Start()
     {
+
+        audioSource.clip = audio;
+        audioSource.loop = true;
+        audioSource.Play();
         if (PlayerPrefs.GetInt("SkipMainMenu", 0) == 1)
         {
             MainMenu.SetActive(false);

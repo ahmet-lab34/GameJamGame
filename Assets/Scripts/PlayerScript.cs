@@ -117,7 +117,7 @@ public class PlayerScript : MonoBehaviour
 
     public void GetHit()
     {
-        if (playerNumbers.playerSouls > 0)
+        if (playerNumbers.playerSouls >= 0)
         {
             playerNumbers.playerSouls -= 1;
             RespawnPlayer();

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class UIHoverEvent : MonoBehaviour
 {
     public List<Button> buttonsToManage;
+    public Sprite hoverSprite;
+    public Sprite hoverSprite2;
 
 
     private void Start()
@@ -42,10 +44,16 @@ public class UIHoverEvent : MonoBehaviour
     private void OnHoverEnter(Button button)
     {
         Debug.Log("Hovering over " + button.name);
+        Image img = button.GetComponent<Image>();
+        img.sprite = hoverSprite2;
+        img.color = Color.blue;
     }
 
     private void OnHoverExit(Button button)
     {
         Debug.Log("Left the button " + button.name);
+        Image img = button.GetComponent<Image>();
+        img.sprite = hoverSprite;
+        img.color = Color.white;
     }
 }
