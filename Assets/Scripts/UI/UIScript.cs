@@ -23,6 +23,7 @@ public class UIScript : MonoBehaviour
     [SerializeField] private Button OptionsBackButton;
     [SerializeField] private PlayerScript playerScript;
     [SerializeField] private AudioClip audio;
+    [SerializeField] private AudioSource PlayButtonAudio;
     public AudioSource audioSource;
 
     private bool open = false;
@@ -84,6 +85,7 @@ public class UIScript : MonoBehaviour
         }
         if (button == MainPlayButton)
         {
+            PlayButtonAudio.Play();
             StartGameFromMenu();
         }
         if (button == MainOptionsButton)

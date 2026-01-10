@@ -9,6 +9,9 @@ public class UIHoverEvent : MonoBehaviour
     public Sprite hoverSprite;
     public Sprite hoverSprite2;
 
+    public AudioSource HoverUI;
+    public AudioClip HoverClip;
+
 
     private void Start()
     {
@@ -47,6 +50,7 @@ public class UIHoverEvent : MonoBehaviour
         Image img = button.GetComponent<Image>();
         img.sprite = hoverSprite2;
         img.color = Color.blue;
+        HoverUI.PlayOneShot(HoverClip);
     }
 
     private void OnHoverExit(Button button)

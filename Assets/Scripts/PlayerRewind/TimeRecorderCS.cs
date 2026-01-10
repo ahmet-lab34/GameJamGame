@@ -4,6 +4,7 @@ using System.Collections;
 
 public class TimeRecorderCS : MonoBehaviour
 {
+    public AudioSource SpawningClone;
     [System.Serializable]
     public struct FrameData
     {
@@ -17,7 +18,6 @@ public class TimeRecorderCS : MonoBehaviour
     public GameObject clonePrefab;
 
     private List<FrameData> recordedFrames = new List<FrameData>();
-
     void Update()
     {
         playerScript = GetComponent<PlayerScript>();
@@ -56,6 +56,7 @@ public class TimeRecorderCS : MonoBehaviour
     void SpawnClone()
     {
         if (recordedFrames.Count == 0) return;
+        SpawningClone.Play();
 
         GameObject clone = Instantiate(
             clonePrefab,
