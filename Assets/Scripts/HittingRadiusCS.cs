@@ -8,6 +8,8 @@ public class HittingRadiusCS : MonoBehaviour
     private bool canAttack = true;
     public float attackCooldown = 1f;
 
+    public AudioSource ThySwordSound;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         animator = GetComponentInParent<Animator>();
@@ -31,10 +33,13 @@ public class HittingRadiusCS : MonoBehaviour
         {
             currentEnemy.enemyHealth -= 1;
             Debug.Log("Enemy is damaged");
+            ThySwordSound.Play();
+
             StartCoroutine(AttackCooldown());
         }
         else if (Input.GetKeyDown(KeyCode.F) && canAttack)
         {
+            ThySwordSound.Play();
             StartCoroutine(AttackCooldown());
         }
     }

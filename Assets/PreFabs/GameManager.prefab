@@ -63,9 +63,9 @@ MonoBehaviour:
   MainExitButton: {fileID: 0}
   OptionsBackButton: {fileID: 0}
   playerScript: {fileID: 0}
-  audio: {fileID: 0}
-  PlayButtonAudio: {fileID: 0}
-  audioSource: {fileID: 0}
+  audio: {fileID: 8300000, guid: 7e338996f94a4214a82e99b09781c172, type: 3}
+  PlayButtonAudio: {fileID: 6072008780665234539}
+  audioSource: {fileID: 4116255497521537095}
 --- !u!114 &8236220169693403733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,9 +88,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  hoverSprite: {fileID: 0}
-  hoverSprite2: {fileID: 0}
-  HoverUI: {fileID: 0}
+  hoverSprite: {fileID: -4500892277910582690, guid: 180c088590bb4ee4684c33a22d29595d, type: 3}
+  hoverSprite2: {fileID: 6336965144557764222, guid: 96c8c151740fc084da2139cf4e57d1a2, type: 3}
+  HoverUI: {fileID: 7694340624858171407}
+  HoverClip: {fileID: 8300000, guid: 509c7ed094084bb41854bed214c9c31a, type: 3}
 --- !u!114 &2893622884323634006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +214,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 2822409749079555457, guid: 50efaebc5b3a42447be7445b72fca918, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 1126b7317e982024bbd61dde00f90210, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -307,10 +308,10 @@ AudioSource:
   m_GameObject: {fileID: 7655801991680300735}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2822409749079555457, guid: 50efaebc5b3a42447be7445b72fca918, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 8300000, guid: 509c7ed094084bb41854bed214c9c31a, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

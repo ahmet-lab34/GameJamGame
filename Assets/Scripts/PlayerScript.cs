@@ -27,6 +27,14 @@ public class PlayerScript : MonoBehaviour
     public static UnityEngine.Vector2 checkpointPosition;
     public static bool hasCheckpoint = false;
 
+    public AudioClip JumpingSound;
+    public AudioClip[] sounds;
+    private AudioSource audioSource;
+    private Coroutine soundCoroutine;
+    public float minInterval = 0.1f;
+    public float maxInterval = 0.15f;
+
+
     public PlayerStats movingStats = new PlayerStats();
     private PlayerStats originalStats = new PlayerStats();
 
@@ -58,6 +66,8 @@ public class PlayerScript : MonoBehaviour
 
         jumpAction = input.actions.FindAction("Jump");
 
+        audioSource = GetComponent<AudioSource>();
+
         Time.timeScale = 1f;
     }
 
@@ -75,6 +85,17 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         Horizontal = Input.GetAxisRaw("Horizontal");
+
+        if (Horizontal != 0 && soundCoroutine == null && GroundCheck.Grounded)
+        {
+            soundCoroutine = StartCoroutine(PlayRandomSounds());
+        }
+        else if (Horizontal == 0 && soundCoroutine != null)
+        {
+            StopCoroutine(soundCoroutine);
+            soundCoroutine = null;
+            audioSource.Stop();
+        }
 
         animator.SetBool("Running", Horizontal > 0 || Horizontal < 0);
         animator.SetFloat("yVelocity", rb.linearVelocity.y);
@@ -110,9 +131,21 @@ public class PlayerScript : MonoBehaviour
 
     void Jump()
     {
+        audioSource.PlayOneShot(JumpingSound);
         doubleJump = true;
         animator.SetBool("Jumping", true);
         rb.AddForce(UnityEngine.Vector2.up * movingStats.jumpHeight, ForceMode2D.Impulse);
+    }
+
+    IEnumerator PlayRandomSounds()
+    {
+        while (true)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, sounds.Length);
+            audioSource.PlayOneShot(sounds[randomIndex]);
+
+            yield return new WaitForSeconds(UnityEngine.Random.Range(minInterval, maxInterval));
+        }
     }
 
     public void GetHit()

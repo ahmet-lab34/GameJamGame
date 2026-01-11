@@ -19,9 +19,14 @@ public class DoorOpenCS : MonoBehaviour
     public bool closeDoorr = false;
     private Quaternion OriginalRotation;
     private Quaternion openRotation;
+    private AudioSource audioSource;
+
+    bool openSoundPlayed = false;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         OriginalRotation = transform.rotation;
 
         impulseSource = GetComponent<CinemachineImpulseSource>();
@@ -34,7 +39,12 @@ public class DoorOpenCS : MonoBehaviour
         if (!ImpulseMade)
         {
             impulseSource.GenerateImpulse();
-            ImpulseMade = !ImpulseMade;
+            ImpulseMade = true;
+        }
+        if (!openSoundPlayed)
+        {
+            audioSource.Play();
+            openSoundPlayed = true;
         }
         Debug.Log("The action is triggered !");
     }
@@ -44,8 +54,9 @@ public class DoorOpenCS : MonoBehaviour
         if (ImpulseMade)
         {
             impulseSource.GenerateImpulse();
-            ImpulseMade = !ImpulseMade;
+            ImpulseMade = false;
         }
+        openSoundPlayed = false;
     }
     void openDoorUpdate()
     {

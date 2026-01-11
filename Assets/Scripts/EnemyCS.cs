@@ -14,9 +14,15 @@ public class EnemyCS : MonoBehaviour
 
     private Transform target;
 
+    public AudioSource EnemyWalkingSound;
+    public float minInterval;
+    public float maxInterval;
+    public AudioClip[] sounds;
+
     void Start()
     {
         target = pointA;
+        StartCoroutine(PlayRandomSounds());
     }
 
     void Update()
@@ -32,6 +38,16 @@ public class EnemyCS : MonoBehaviour
         if (Vector3.Distance(transform.position, target.position) < 0.1f && !wait)
         {
             StartCoroutine(Wait());
+        }
+    }
+    IEnumerator PlayRandomSounds()
+    {
+        while (true)
+        {
+            int randomIndex = Random.Range(0, sounds.Length);
+            EnemyWalkingSound.PlayOneShot(sounds[randomIndex]);
+
+            yield return new WaitForSeconds(Random.Range(minInterval, maxInterval));
         }
     }
 
